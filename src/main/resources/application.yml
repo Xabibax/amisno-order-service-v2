@@ -7,13 +7,16 @@ spring:
       write-dates-as-timestamps: false
   data:
     mongodb:
-      host: "localhost"
+      host: "mongo"
       port: 27017
       database: "amisno"
+      username: "root"
+      password: "toor"
+      authentication-database: "admin"
 
 server:
   context-path: '/v1'
-  port: 8081
+  port: 8082
 
 springfox:
   documentation:
@@ -21,17 +24,9 @@ springfox:
       v2:
         path: '/api-docs'
 
-#eureka:
-#  instance:
-#    hostname: localhost
-#  client:
-#    serviceUrl:
-#      defaultZone: http://amisno-infra-eureka:9103/eureka/
-#
-#ping-server:
-#  ribbon:
-#    eureka:
-#      enabled: false # Disable Default Ping
-#    listOfServers: localhost:8000,localhost:8001,localhost:8002,,localhost:8003
-#    ServerListRefreshInterval: 15000
-
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://amisno-infra-eureka:9103/eureka/

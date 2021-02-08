@@ -6,6 +6,7 @@ import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,9 @@ public class UserApiController implements UserApi {
     @Autowired
     private UserRepository userRepository;
 
+    @Value( "${server.port}" )
+    private String port;
+
     @org.springframework.beans.factory.annotation.Autowired
     public UserApiController(ObjectMapper objectMapper, HttpServletRequest request) {
         this.objectMapper = objectMapper;
@@ -39,7 +43,7 @@ public class UserApiController implements UserApi {
 
     public ResponseEntity<Void> createUser(@ApiParam(value = "Created user object" ,required=true )  @Valid @RequestBody User body) {
         String accept = request.getHeader("Accept");
-        System.out.println(body);
+        System.out.println("PORT : " + port);
         userRepository.save(body);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
