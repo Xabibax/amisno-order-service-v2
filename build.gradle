@@ -16,14 +16,38 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.1.16.RELEASE'
-    implementation 'org.springframework.boot:spring-boot-starter-tomcat:2.1.16.RELEASE'
-    implementation 'io.springfox:springfox-oas:3.0.0'
-    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
-    implementation 'com.github.joschi.jackson:jackson-datatype-threetenbp:2.6.4'
-    implementation 'javax.validation:validation-api:2.0.1.Final'
-    implementation 'org.springframework.plugin:spring-plugin-core:2.0.0.RELEASE'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.1.16.RELEASE'
+    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-tomcat:${springBootVersion}"
+    implementation "io.springfox:springfox-oas:3.0.0"
+    implementation "io.springfox:springfox-swagger-ui:3.0.0"
+    implementation "com.github.joschi.jackson:jackson-datatype-threetenbp:2.6.4"
+    implementation "javax.validation:validation-api:2.0.1.Final"
+    implementation "org.springframework.plugin:spring-plugin-core:2.0.0.RELEASE"
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+
+    /* added from order-service v2 */
+
+    implementation "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-data-mongodb:${springBootVersion}"
+    implementation "org.springframework.data:spring-data-mongodb:1.10.9.RELEASE"
+
+    /*
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation "org.springframework.cloud:spring-cloud-starter-netflix-ribbon:1.4.7.RELEASE"
+     */
+
+    /*
+    //implementation "javax.xml.bind:jaxb-api:2.3.0"
+    //implementation "com.sun.xml.bind:jaxb-core:2.3.0"
+    //implementation "com.sun.xml.bind:jaxb-impl:2.3.0"
+
+    implementation "io.github.resilience4j:resilience4j-spring-boot2:1.4.0"
+    implementation "io.github.resilience4j:resilience4j-all:1.4.0"
+    implementation "io.github.resilience4j:resilience4j-reactor:1.4.0"
+    implementation "io.micrometer:micrometer-registry-prometheus:1.6.3"
+
+    /* */
 }
 
 group = 'io.swagger'
