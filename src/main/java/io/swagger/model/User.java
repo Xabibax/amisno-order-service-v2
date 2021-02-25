@@ -3,8 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -13,26 +12,21 @@ import javax.validation.constraints.*;
  * User
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-01-24T16:22:42.251Z")
-
-
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2021-02-25T07:46:10.813Z[GMT]")
 
 
 public class User   {
-  @JsonProperty("id")
-  private String id = null;
-
-  @JsonProperty("username")
-  private String username = null;
+  @JsonProperty("email")
+  private String email = null;
 
   @JsonProperty("firstName")
   private String firstName = null;
 
+  @JsonProperty("id")
+  private String id = null;
+
   @JsonProperty("lastName")
   private String lastName = null;
-
-  @JsonProperty("email")
-  private String email = null;
 
   @JsonProperty("password")
   private String password = null;
@@ -43,44 +37,26 @@ public class User   {
   @JsonProperty("userStatus")
   private Integer userStatus = null;
 
-  public User id(String id) {
-    this.id = id;
+  @JsonProperty("username")
+  private String username = null;
+
+  public User email(String email) {
+    this.email = email;
     return this;
   }
 
   /**
-   * Get id
-   * @return id
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getId() {
-    return id;
+   * Get email
+   * @return email
+   **/
+  @Schema(description = "")
+  
+    public String getEmail() {
+    return email;
   }
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public User username(String username) {
-    this.username = username;
-    return this;
-  }
-
-  /**
-   * Get username
-   * @return username
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
+  public void setEmail(String email) {
+    this.email = email;
   }
 
   public User firstName(String firstName) {
@@ -91,16 +67,34 @@ public class User   {
   /**
    * Get firstName
    * @return firstName
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getFirstName() {
+   **/
+  @Schema(description = "")
+  
+    public String getFirstName() {
     return firstName;
   }
 
   public void setFirstName(String firstName) {
     this.firstName = firstName;
+  }
+
+  public User id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Get id
+   * @return id
+   **/
+  @Schema(description = "")
+  
+    public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
   }
 
   public User lastName(String lastName) {
@@ -111,36 +105,15 @@ public class User   {
   /**
    * Get lastName
    * @return lastName
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getLastName() {
+   **/
+  @Schema(description = "")
+  
+    public String getLastName() {
     return lastName;
   }
 
   public void setLastName(String lastName) {
     this.lastName = lastName;
-  }
-
-  public User email(String email) {
-    this.email = email;
-    return this;
-  }
-
-  /**
-   * Get email
-   * @return email
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
   }
 
   public User password(String password) {
@@ -151,11 +124,10 @@ public class User   {
   /**
    * Get password
    * @return password
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getPassword() {
+   **/
+  @Schema(description = "")
+  
+    public String getPassword() {
     return password;
   }
 
@@ -171,11 +143,10 @@ public class User   {
   /**
    * Get phone
    * @return phone
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getPhone() {
+   **/
+  @Schema(description = "")
+  
+    public String getPhone() {
     return phone;
   }
 
@@ -191,16 +162,34 @@ public class User   {
   /**
    * User Status
    * @return userStatus
-  **/
-  @ApiModelProperty(value = "User Status")
-
-
-  public Integer getUserStatus() {
+   **/
+  @Schema(description = "User Status")
+  
+    public Integer getUserStatus() {
     return userStatus;
   }
 
   public void setUserStatus(Integer userStatus) {
     this.userStatus = userStatus;
+  }
+
+  public User username(String username) {
+    this.username = username;
+    return this;
+  }
+
+  /**
+   * Get username
+   * @return username
+   **/
+  @Schema(description = "")
+  
+    public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
   }
 
 
@@ -213,19 +202,19 @@ public class User   {
       return false;
     }
     User user = (User) o;
-    return Objects.equals(this.id, user.id) &&
-        Objects.equals(this.username, user.username) &&
+    return Objects.equals(this.email, user.email) &&
         Objects.equals(this.firstName, user.firstName) &&
+        Objects.equals(this.id, user.id) &&
         Objects.equals(this.lastName, user.lastName) &&
-        Objects.equals(this.email, user.email) &&
         Objects.equals(this.password, user.password) &&
         Objects.equals(this.phone, user.phone) &&
-        Objects.equals(this.userStatus, user.userStatus);
+        Objects.equals(this.userStatus, user.userStatus) &&
+        Objects.equals(this.username, user.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, username, firstName, lastName, email, password, phone, userStatus);
+    return Objects.hash(email, firstName, id, lastName, password, phone, userStatus, username);
   }
 
   @Override
@@ -233,14 +222,14 @@ public class User   {
     StringBuilder sb = new StringBuilder();
     sb.append("class User {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
-    sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
-    sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    userStatus: ").append(toIndentedString(userStatus)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -256,4 +245,3 @@ public class User   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

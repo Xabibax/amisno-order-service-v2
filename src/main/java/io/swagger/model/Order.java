@@ -4,8 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import org.threeten.bp.OffsetDateTime;
@@ -17,21 +16,19 @@ import javax.validation.constraints.*;
  * Order
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-01-24T16:22:42.251Z")
-
-
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2021-02-25T07:46:10.813Z[GMT]")
 
 
 public class Order   {
-  @JsonProperty("id")
-  private String id = null;
-
-  @JsonProperty("userId")
-  private String userId = null;
-
   @JsonProperty("articles")
   @Valid
   private List<String> articles = null;
+
+  @JsonProperty("complete")
+  private Boolean complete = null;
+
+  @JsonProperty("id")
+  private String id = null;
 
   @JsonProperty("shipDate")
   private OffsetDateTime shipDate = null;
@@ -68,52 +65,11 @@ public class Order   {
       return null;
     }
   }
-
   @JsonProperty("status")
   private StatusEnum status = null;
 
-  @JsonProperty("complete")
-  private Boolean complete = false;
-
-  public Order id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public Order userId(String userId) {
-    this.userId = userId;
-    return this;
-  }
-
-  /**
-   * Get userId
-   * @return userId
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getUserId() {
-    return userId;
-  }
-
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
+  @JsonProperty("userId")
+  private String userId = null;
 
   public Order articles(List<String> articles) {
     this.articles = articles;
@@ -131,16 +87,53 @@ public class Order   {
   /**
    * Get articles
    * @return articles
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public List<String> getArticles() {
+   **/
+  @Schema(description = "")
+  
+    public List<String> getArticles() {
     return articles;
   }
 
   public void setArticles(List<String> articles) {
     this.articles = articles;
+  }
+
+  public Order complete(Boolean complete) {
+    this.complete = complete;
+    return this;
+  }
+
+  /**
+   * Get complete
+   * @return complete
+   **/
+  @Schema(example = "false", description = "")
+  
+    public Boolean isComplete() {
+    return complete;
+  }
+
+  public void setComplete(Boolean complete) {
+    this.complete = complete;
+  }
+
+  public Order id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Get id
+   * @return id
+   **/
+  @Schema(description = "")
+  
+    public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
   }
 
   public Order shipDate(OffsetDateTime shipDate) {
@@ -151,12 +144,11 @@ public class Order   {
   /**
    * Get shipDate
    * @return shipDate
-  **/
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public OffsetDateTime getShipDate() {
+   **/
+  @Schema(description = "")
+  
+    @Valid
+    public OffsetDateTime getShipDate() {
     return shipDate;
   }
 
@@ -172,11 +164,10 @@ public class Order   {
   /**
    * Order Status
    * @return status
-  **/
-  @ApiModelProperty(value = "Order Status")
-
-
-  public StatusEnum getStatus() {
+   **/
+  @Schema(description = "Order Status")
+  
+    public StatusEnum getStatus() {
     return status;
   }
 
@@ -184,24 +175,23 @@ public class Order   {
     this.status = status;
   }
 
-  public Order complete(Boolean complete) {
-    this.complete = complete;
+  public Order userId(String userId) {
+    this.userId = userId;
     return this;
   }
 
   /**
-   * Get complete
-   * @return complete
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Boolean isComplete() {
-    return complete;
+   * Get userId
+   * @return userId
+   **/
+  @Schema(description = "")
+  
+    public String getUserId() {
+    return userId;
   }
 
-  public void setComplete(Boolean complete) {
-    this.complete = complete;
+  public void setUserId(String userId) {
+    this.userId = userId;
   }
 
 
@@ -214,17 +204,17 @@ public class Order   {
       return false;
     }
     Order order = (Order) o;
-    return Objects.equals(this.id, order.id) &&
-        Objects.equals(this.userId, order.userId) &&
-        Objects.equals(this.articles, order.articles) &&
+    return Objects.equals(this.articles, order.articles) &&
+        Objects.equals(this.complete, order.complete) &&
+        Objects.equals(this.id, order.id) &&
         Objects.equals(this.shipDate, order.shipDate) &&
         Objects.equals(this.status, order.status) &&
-        Objects.equals(this.complete, order.complete);
+        Objects.equals(this.userId, order.userId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, userId, articles, shipDate, status, complete);
+    return Objects.hash(articles, complete, id, shipDate, status, userId);
   }
 
   @Override
@@ -232,12 +222,12 @@ public class Order   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Order {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    articles: ").append(toIndentedString(articles)).append("\n");
+    sb.append("    complete: ").append(toIndentedString(complete)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    shipDate: ").append(toIndentedString(shipDate)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    complete: ").append(toIndentedString(complete)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -253,4 +243,3 @@ public class Order   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

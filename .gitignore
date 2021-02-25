@@ -1,6 +1,4 @@
 # Project exclude paths
-/target/
-
-.idea
-
-.swagger-codegen
+/.gradle/
+/build/
+/build/classes/java/main/

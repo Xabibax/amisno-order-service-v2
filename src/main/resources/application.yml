@@ -14,9 +14,7 @@ spring:
       password: "toor"
       authentication-database: "admin"
 
-server:
-  context-path: '/v1'
-  port: 8082
+server.port: 8082
 
 springfox:
   documentation:
@@ -30,3 +28,36 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://amisno-infra-eureka:9103/eureka/
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      registerHealthIndicator: true
+      minimumNumberOfCalls: 5
+      permittedNumberOfCallsInHalfOpenState: 3
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 10
+      recordExceptions:
+        - org.springframework.web.client.HttpServerErrorException
+        - java.util.concurrent.TimeoutException
+        - java.io.IOException
+  instances:
+    orderService:
+      baseConfig: default
+
+management:
+  endpoints.web.exposure.include: '*'
+  endpoint.health.show-details: always
+  health.diskspace.enabled: false
+  circuitbreakers.enabled: true
+  ratelimiters.enabled: false
+  metrics:
+    tags:.application: ${spring.application.name}
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+        resilience4j.circuitbreaker.calls: true
+server:
+  servlet:
+    context-path: '/'
